@@ -1,6 +1,6 @@
 # graphql-request
 
-Minimal Graphql client compliant with Graphql-over-HTTP.
+Minimal GraphQL client compliant with GraphQL-over-HTTP
 
 ## GraphQL request built on `Request` object
 
