@@ -1,7 +1,7 @@
 // Copyright 2022-latest the graphqland authors. All rights reserved. MIT license.
 // This module is browser compatible.
 
-import { mergeInit } from "./utils.ts";
+import { shallowMergeInit } from "./utils.ts";
 import {
   GraphQLRequestOptions,
   GraphQLRequestParams,
@@ -48,8 +48,7 @@ export class GraphQLRequest extends Request {
       operationName,
       variables,
     });
-
-    const requestInit = mergeInit(init, rest);
+    const requestInit = shallowMergeInit(init, rest);
 
     super(url, requestInit);
   }
@@ -70,7 +69,6 @@ function createRequestInit(
         variables,
         extensions,
       });
-
       const requestInit: RequestInit = {
         method,
         headers: {

@@ -166,6 +166,24 @@ media type is unsupported.
 Client errors contain `request` and `response` data, allowing detailed analysis
 of the actual request and response.
 
+## Compress document
+
+Provides utilities to compress GraphQL documents. It simply removes extra
+characters from the GraphQL document.
+
+Compressing documents reduces bandwidth and increases the operational
+feasibility of the HTTP `GET` method.
+
+```ts
+import { gql } from "https://deno.land/x/gql_request@$VERSION/mod.ts";
+import { assertEquals } from "https://deno.land/std@$VERSION/testing/asserts.ts";
+
+const document = gql`query Test {
+  hello
+}`;
+assertEquals(document, "query Test{hello}");
+```
+
 ## License
 
 Copyright © 2022-present [graphqland](https://github.com/graphqland).

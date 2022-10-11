@@ -10,3 +10,4 @@ export {
 } from "./types.ts";
 export { gqlFetch } from "./fetch.ts";
 export { ClientError, type ClientErrorParams } from "./error.ts";
+export { gql } from "./utils.ts";
