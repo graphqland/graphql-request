@@ -1,7 +1,7 @@
 // Copyright 2022-latest the graphqland authors. All rights reserved. MIT license.
 // This module is browser compatible.
 
-import { FormattedExecutionResult, JsonValue } from "./deps.ts";
+import { FormattedExecutionResult, json } from "./deps.ts";
 import { GraphQLRequest } from "./request.ts";
 import { ClientError, ClientErrorParams } from "./error.ts";
 
@@ -25,8 +25,8 @@ import { ClientError, ClientErrorParams } from "./error.ts";
  * ```
  */
 export async function gqlFetch<
-  Data extends JsonValue = { [k: string]: JsonValue },
-  Extensions extends JsonValue = { [k: string]: JsonValue },
+  Data extends json = { [k: string]: json },
+  Extensions extends json = { [k: string]: json },
 >(
   input: string | URL,
   query: string,

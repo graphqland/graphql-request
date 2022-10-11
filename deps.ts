@@ -2,4 +2,4 @@ export {
   type FormattedExecutionResult,
   type GraphQLFormattedError,
 } from "https://esm.sh/v96/graphql@16.6.0";
-export { type JsonValue } from "https://deno.land/std@0.159.0/encoding/json/stream.ts";
+export { type json } from "https://deno.land/x/pure_json@1.0.0-beta.1/mod.ts";
