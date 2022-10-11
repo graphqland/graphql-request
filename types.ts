@@ -1,3 +1,6 @@
+// Copyright 2022-latest the graphqland authors. All rights reserved. MIT license.
+// This module is browser compatible.
+
 /** GraphQL request options. */
 export interface GraphQLRequestOptions {
   /** The name of the Operation in the Document to execute. */

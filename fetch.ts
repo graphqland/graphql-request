@@ -1,3 +1,6 @@
+// Copyright 2022-latest the graphqland authors. All rights reserved. MIT license.
+// This module is browser compatible.
+
 import { FormattedExecutionResult, JsonValue } from "./deps.ts";
 import { GraphQLRequest } from "./request.ts";
 import { ClientError, ClientErrorParams } from "./error.ts";
@@ -18,9 +21,7 @@ import { ClientError, ClientErrorParams } from "./error.ts";
  *     name
  *   }
  * }`;
- * const { data, errors, extensions } = await gqlFetch<
- *   { person: { name: string } }
- * >("<ENDPOINT>", query);
+ * const { data, errors, extensions } = await gqlFetch<{ person: { name: string } }>("<ENDPOINT>", query);
  * ```
  */
 export async function gqlFetch<
