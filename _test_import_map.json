@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "https://deno.land/x/gql_request@$VERSION/": "./",
+    "https://deno.land/std@$VERSION/": "https://deno.land/std@0.159.0/"
+  }
+}
