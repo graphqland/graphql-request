@@ -5,3 +5,5 @@ export {
   type RequestOptions,
   type RequestParams,
 } from "./types.ts";
+export { gqlFetch } from "./fetch.ts";
+export { ClientError, type ClientErrorParams } from "./error.ts";

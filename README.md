@@ -15,7 +15,10 @@ const query = `query {
     name
   }
 }`;
-const request = new GraphQLRequest("https://graphql.org/swapi-graphql", query);
+const request = new GraphQLRequest(
+  "https://swapi-graphql.netlify.app/.netlify/functions/index",
+  query,
+);
 
 fetch(request);
 ```
@@ -44,11 +47,15 @@ const query = `query PersonQuery($id: ID!) {
     name
   }
 }`;
-const request = new GraphQLRequest("https://graphql.org/swapi-graphql", query, {
-  variables: {
-    id: "1",
+const request = new GraphQLRequest(
+  "https://swapi-graphql.netlify.app/.netlify/functions/index",
+  query,
+  {
+    variables: {
+      id: "1",
+    },
   },
-});
+);
 ```
 
 ### Request init options
@@ -72,10 +79,17 @@ const query = `query {
     name
   }
 }`;
-const request = new GraphQLRequest("https://graphql.org/swapi-graphql", query, {
-  method: "GET",
-});
-assertEquals(request.url, "https://graphql.org/swapi-graphql?query=query...");
+const request = new GraphQLRequest(
+  "https://swapi-graphql.netlify.app/.netlify/functions/index",
+  query,
+  {
+    method: "GET",
+  },
+);
+assertEquals(
+  request.url,
+  "https://swapi-graphql.netlify.app/.netlify/functions/index?query=query...",
+);
 ```
 
 ### GET or POST
@@ -104,6 +118,53 @@ import { assertThrows } from "https://deno.land/std/testing/asserts.ts";
 
 assertThrows(() => new GraphQLRequest("", ""), TypeError, "Invalid URL");
 ```
+
+## Fetch GraphQL
+
+Supports GraphQL-specific fetch functions.
+
+It conforms to the GraphQL-over-HTTP specification and supports the following
+media types.
+
+- application/graphql-response+json
+- application/json
+
+properly handles HTTP response statuses and accepts generics types.
+
+It also has an API similar to `fetch` and can be fully customized with
+`RequestInit`.
+
+```ts
+import { gqlFetch } from "https://deno.land/x/gql_request@$VERSION/mod.ts";
+
+const query = `query {
+  person(personID: "1") {
+    name
+  }
+}`;
+const { data, errors, extensions } = await gqlFetch<
+  { person: { name: string } }
+>("https://swapi-graphql.netlify.app/.netlify/functions/index", query);
+```
+
+### Throwing Error
+
+It may throw the following errors:
+
+| Name         | Condition                                                       |
+| ------------ | --------------------------------------------------------------- |
+| TypeError    | When DNS error, input is invalid URL or Header name is invalid. |
+| SynTaxError  | When parsing of the response body fails.                        |
+| DOMException | When signal has been aborted.                                   |
+| ClientError  | When the response was unsuccessful.                             |
+
+#### Client error
+
+Client errors are thrown when the response status is not `2XX` or the response
+media type is unsupported.
+
+Client errors contain `request` and `response` data, allowing detailed analysis
+of the actual request and response.
 
 ## License
 
