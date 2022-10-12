@@ -4,6 +4,7 @@
 import { FormattedExecutionResult, json } from "./deps.ts";
 import { GraphQLRequest } from "./request.ts";
 import { ClientError, ClientErrorParams } from "./error.ts";
+import { RequestOptions } from "./types.ts";
 
 /** GraphQL fetcher.
  *
@@ -30,9 +31,9 @@ export async function gqlFetch<
 >(
   input: string | URL,
   query: string,
-  requestInit?: RequestInit,
+  options?: RequestOptions,
 ): Promise<FormattedExecutionResult<Data, Extensions>> {
-  const request = new GraphQLRequest(input, query, requestInit);
+  const request = new GraphQLRequest(input, query, options);
   const response = await fetch(request);
   const contentType = response.headers.get("content-type");
   const params: ClientErrorParams = {
