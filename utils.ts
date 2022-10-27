@@ -1,3 +1,6 @@
+// Copyright 2022-latest the graphqland authors. All rights reserved. MIT license.
+// This module is browser compatible.
+
 /** Shallow merge headers.
  * @param left Base headers.
  * @param right Priority headers in case of conflicts.
