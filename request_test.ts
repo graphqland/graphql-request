@@ -19,8 +19,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(`http://localhost:8000/?query=query%7Btest%7D`, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
           },
         }),
       );
@@ -40,8 +39,7 @@ describe("GraphQLRequest", () => {
           `http://localhost:8000/?query=query%7Btest%7D&variables=%7B%22a%22%3A%221%22%7D`,
           {
             headers: {
-              accept:
-                "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+              accept: "application/graphql-response+json,application/json",
             },
           },
         ),
@@ -60,8 +58,7 @@ describe("GraphQLRequest", () => {
           `http://localhost:8000/?query=query%7Btest%7D&operationName=NameQuery`,
           {
             headers: {
-              accept:
-                "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+              accept: "application/graphql-response+json,application/json",
             },
           },
         ),
@@ -80,8 +77,7 @@ describe("GraphQLRequest", () => {
           `http://localhost:8000/?query=query%7Btest%7D&extensions=%7B%22a%22%3A%220%22%7D`,
           {
             headers: {
-              accept:
-                "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+              accept: "application/graphql-response+json,application/json",
             },
           },
         ),
@@ -98,8 +94,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(`http://localhost:8000/?query=query%7Btest%7D`, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
             "x-custom": "test",
           },
         }),
@@ -115,8 +110,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(input, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
             "content-type": "application/json;charset=UTF-8",
           },
           body: `{"query":"query{test}"}`,
@@ -134,8 +128,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(input, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
             "content-type": "application/json;charset=UTF-8",
           },
           body: `{"query":"query{test}","variables":{"a":"0"}}`,
@@ -153,8 +146,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(input, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
             "content-type": "application/json;charset=UTF-8",
           },
           body: `{"query":"query{test}","operationName":"Query"}`,
@@ -172,8 +164,7 @@ describe("GraphQLRequest", () => {
         request,
         new Request(input, {
           headers: {
-            accept:
-              "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+            accept: "application/graphql-response+json,application/json",
             "content-type": "application/json;charset=UTF-8",
           },
           body: `{"query":"query{test}","extensions":{"a":"a"}}`,

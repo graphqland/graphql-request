@@ -9,8 +9,7 @@ import {
   RequestParams,
 } from "./types.ts";
 
-const ACCEPT =
-    "application/graphql-response+json;charset=UTF-8,application/json;charset=UTF-8",
+const ACCEPT = "application/graphql-response+json,application/json",
   CONTENT_TYPE = "application/json;charset=UTF-8",
   DEFAULT_METHOD = "POST";
 
